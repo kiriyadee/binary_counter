@@ -1,3 +1,18 @@
+// This document provides a comprehensive guide on designing a Mod-12 Synchronous Counter using JK Flip-Flops.
+// It includes the following sections:
+// 1. Basic Requirements: Defines the Mod-12 Counter and calculates the number of Flip-Flops needed.
+// 2. State Diagram: Illustrates the state transitions of the counter.
+// 3. State Table: Details the state transitions and JK input conditions.
+// 4. Boolean Functions: Derives the Boolean functions for each Flip-Flop.
+// 5. Logic Circuit: Describes the components and connections required for the counter.
+// 6. Additional Considerations: Discusses the advantages of using a Synchronous Counter and reset conditions.
+// 7. Testing: Outlines the steps to test the counter's functionality.
+// 8. Advantages of Mod-12 Counter: Highlights the benefits and applications of the counter.
+// 9. LCD Display: Explains how to display the counter's state on an LCD using a microcontroller.
+// 10. Tinkercad Simulation: Provides a step-by-step guide to simulate the counter in Tinkercad.
+// 11. Exercises and Review Questions: Includes questions to reinforce understanding of the counter design.
+// Summary: Summarizes the design process and the educational value of using Tinkercad for circuit design.
+
 # การออกแบบ Mod-12 Synchronous Counter ด้วย JK Flip-Flops
 
 ## 1. ความต้องการพื้นฐาน
@@ -18,7 +33,7 @@
 ```
     0000 (0) → 0001 (1) → 0010 (2) → 0011 (3) → 0100 (4) → 0101 (5) → 0110 (6) → 0111 (7) → 1000 (8) → 1001 (9) → 1010 (10) → 1011 (11) → 0000 (0)
       ↑                                                                                                                           |
-      └───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+      └───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ## 2.1 การทำงานของเคาน์เตอร์
@@ -26,9 +41,9 @@
 เคาน์เตอร์จะทำงานโดยการนับจากสถานะ 0000 (0) ไปจนถึงสถานะ 1011 (11) และเมื่อถึงสถานะ 1100 (12) จะรีเซ็ตกลับไปที่สถานะ 0000 (0) ตามแผนภาพสถานะที่แสดงด้านล่าง:
 
 ```
-    0000 (0) → 0001 (1) → 0010 (2) → 0011 (3) → 0100 (4) → 0101 (5) → 0110 (6) → 0111 (7) → 1000 (8) → 1001 (9) → 1010 (10) → 1011 (11) → 0000 (0)
-      ↑                                                                                                                           |
-      └───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+    0000 (0) → 0001 (1) → 0010 (2) → 0011 (3) → 0100 (4) → 0101 (5) → 0110 (6) → 0111 (7) → 1000 (8) → 1001 (9) → 1010 (10) → 1011 (11)
+      ↑                                                                                                               |
+      └───────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ## 3. ตารางการเปลี่ยนสถานะ (State Table)
@@ -236,3 +251,50 @@
 ## สรุป
 
 การออกแบบ Mod-12 Synchronous Counter ด้วย JK Flip-Flops เป็นกระบวนการที่ต้องอาศัยความเข้าใจในหลักการทำงานของ Flip-Flops การหาฟังก์ชันบูลีน การออกแบบวงจรลอจิก และการทดสอบอย่างละเอียด การใช้เครื่องมือเช่น Tinkercad ช่วยให้นักศึกษาได้ทดลองและเรียนรู้การออกแบบวงจรจริงได้อย่างมีประสิทธิภาพ เอกสารนี้หวังว่าจะเป็นประโยชน์ในการศึกษาด้านอิเล็กทรอนิกส์ดิจิทัลและการออกแบบระบบนับที่ซับซ้อนสำหรับนักศึกษา
+
+## 4.5 แผนภาพ K-Map สำหรับการหาฟังก์ชันบูลีน
+
+### K-Map สำหรับ Q0
+
+| Q1Q0\Q3Q2 | 00  | 01  | 11  | 10  |
+| --------- | --- | --- | --- | --- |
+| 00        | 0   | 1   | 0   | 1   |
+| 01        | 1   | 0   | 1   | 0   |
+| 11        | 0   | 1   | 0   | 1   |
+| 10        | 1   | 0   | 1   | 0   |
+
+### K-Map สำหรับ Q1
+
+| Q1Q0\Q3Q2 | 00  | 01  | 11  | 10  |
+| --------- | --- | --- | --- | --- |
+| 00        | 0   | 0   | 0   | 0   |
+| 01        | 1   | 1   | 1   | 1   |
+| 11        | 0   | 0   | 0   | 0   |
+| 10        | 1   | 1   | 1   | 1   |
+
+### K-Map สำหรับ Q2
+
+| Q1Q0\Q3Q2 | 00  | 01  | 11  | 10  |
+| --------- | --- | --- | --- | --- |
+| 00        | 0   | 0   | 0   | 0   |
+| 01        | 0   | 0   | 0   | 0   |
+| 11        | 1   | 1   | 1   | 1   |
+| 10        | 1   | 1   | 1   | 1   |
+
+### K-Map สำหรับ Q3
+
+| Q1Q0\Q3Q2 | 00  | 01  | 11  | 10  |
+| --------- | --- | --- | --- | --- |
+| 00        | 0   | 0   | 0   | 0   |
+| 01        | 0   | 0   | 0   | 0   |
+| 11        | 0   | 0   | 0   | 0   |
+| 10        | 1   | 1   | 1   | 1   |
+
+จากแผนภาพ K-Map ข้างต้น เราสามารถหาฟังก์ชันบูลีนสำหรับแต่ละ Q ได้ดังนี้:
+
+การออกแบบตัวนับแบบโมดูลัส 12 (Mod-12 Counter) ที่อธิบายการเปลี่ยนแปลงของบิตแต่ละตัว (Q0, Q1, Q2, Q3) ในรูปแบบที่เข้าใจง่ายขึ้น:
+
+Q0: เปลี่ยนสถานะทุกครั้งที่มีการนับ (Toggle ทุกครั้ง)
+Q1: เปลี่ยนสถานะเมื่อ Q0 เปลี่ยนจาก 1 เป็น 0 (Toggle เมื่อ Q0 = 1)
+Q2: เปลี่ยนสถานะเมื่อ Q1 และ Q0 เป็น 1 (Toggle เมื่อ Q1 และ Q0 = 1)
+Q3: เปลี่ยนสถานะเมื่อ Q2, Q1 และ Q0 เป็น 1 (Toggle เมื่อ Q2, Q1 และ Q0 = 1)
